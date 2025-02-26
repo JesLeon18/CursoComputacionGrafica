@@ -31,7 +31,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main_Modelado.cpp">
+    <ClCompile Include="Main_Modelado_Jesus_Perez.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
