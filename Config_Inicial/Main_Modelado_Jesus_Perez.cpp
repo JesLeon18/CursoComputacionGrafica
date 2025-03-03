@@ -623,5 +623,3 @@ int main() {
 	 if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
 		 rot -= 0.2f;
  }
-
-
