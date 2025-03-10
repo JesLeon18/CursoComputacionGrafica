@@ -462,6 +462,7 @@ int main() {
 		 if (pulgar > -60.0f)
 			 pulgar -= 0.18f;
 
+	 //Todos los dedos juntos
 
 	 if (glfwGetKey(window, GLFW_KEY_Z) == GLFW_PRESS)
 		 if (dedo1 < 90.0f)
