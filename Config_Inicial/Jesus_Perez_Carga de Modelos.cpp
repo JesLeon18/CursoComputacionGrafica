@@ -103,6 +103,11 @@ int main( )
     
     // Load models
     Model dog((char*)"Models/RedDog.obj");
+    Model oxxo((char*)"Models/Oxxo.obj");
+    Model nosys((char*)"Models/NoSys.obj");
+    Model grass((char*)"Models/Grass.obj");
+    Model trash((char*)"Models/Trash.obj");
+    Model tree((char*)"Models/Tree.obj");
     glm::mat4 projection = glm::perspective( camera.GetZoom( ), ( float )SCREEN_WIDTH/( float )SCREEN_HEIGHT, 0.1f, 100.0f );
     
   
@@ -131,14 +136,34 @@ int main( )
 
         // Draw the loaded model
         glm::mat4 model(1);
+
+        model = glm::translate(model, glm::vec3(0.0f, 0.5f, 2.0f));
+        model = glm::scale(model, glm::vec3(1.5f, 1.5f, 1.5f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         dog.Draw(shader);
 
-        model = glm::translate(model, glm::vec3(2.0f, 0.0f, 0.0f));
-        model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+        model = glm::mat4(1);
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-        dog.Draw(shader);
+        oxxo.Draw(shader);
 
+        model = glm::translate(model, glm::vec3(0.5f, 1.8f, 0.8f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        nosys.Draw(shader);
+
+        model = glm::translate(model, glm::vec3(0.0f, -1.8f, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        grass.Draw(shader);
+
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(0.5f, 0.0f, 1.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        trash.Draw(shader);
+
+
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        tree.Draw(shader);
 
         // Swap the buffers
         glfwSwapBuffers( window );
