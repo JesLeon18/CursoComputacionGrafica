@@ -1,3 +1,12 @@
+/*
+Iluminacion2
+23/03/2025
+Perez Leon Jesus Omar
+317129388
+*/
+
+
+
 #include <iostream>
 #include <cmath>
 
