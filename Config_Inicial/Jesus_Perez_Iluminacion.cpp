@@ -130,6 +130,7 @@ int main()
     Model tree((char*)"Models/Tree.obj");
     Model moon((char*)"Models/moon.obj");
     Model sun((char*)"Models/sun.obj");
+    Model desk((char*)"Models/escritorio.obj");
     glm::mat4 projection = glm::perspective(camera.GetZoom(), (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT, 0.1f, 100.0f);
 
     float vertices[] = {
@@ -313,6 +314,11 @@ int main()
         model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         tree.Draw(shader);
+
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        desk.Draw(shader);
         //glDrawArrays(GL_TRIANGLES, 0, 36);
 
         

@@ -46,7 +46,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Jesus_Perez_fuentesDeLuz.cpp">
+    <ClCompile Include="Jesus_Perez_Maquina de estados.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
