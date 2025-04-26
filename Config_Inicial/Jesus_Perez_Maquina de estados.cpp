@@ -116,6 +116,7 @@ float FLegs = 0.0f;
 float RLegs = 0.0f;
 float head = 0.0f;
 float tail = 0.0f;
+float body = 0.0f;
 glm::vec3 dogPos (0.0f,0.0f,0.0f);
 float dogRot = 0.0f;
 bool step = false;
@@ -314,6 +315,7 @@ int main()
 		glUniform1i(glGetUniformLocation(lightingShader.Program, "transparency"), 0);
 		//Body
 		modelTemp= model = glm::translate(model, dogPos);
+		model = glm::rotate(model, glm::radians(body), glm::vec3(0.0f, 1.0f, 0.0f));
 		modelTemp= model = glm::rotate(model, glm::radians(dogRot), glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		DogBody.Draw(lightingShader);
@@ -514,19 +516,9 @@ void KeyCallback(GLFWwindow *window, int key, int scancode, int action, int mode
 	
 }
 void Animation() {
-	if (AnimBall)
-	{
-		rotBall += 0.4f;
-		//printf("%f", rotBall);
-	}
 	
-	if (AnimDog)
-	{
-		rotDog -= 0.6f;
-		//printf("%f", rotBall);
-	}
 
-	if (dogAnim == 1) { //Walk Animation
+	if (dogAnim == 1) {			//Primer recorrido
 		if (!step) {	//STATE 1
 			RLegs += 0.03f;
 			FLegs += 0.03f;
@@ -546,12 +538,141 @@ void Animation() {
 			}
 		}
 
-		dogPos.z += 0.0001;
+		dogPos.z += 0.001;
 			
-		if (dogPos.z >= 2.3f)
-			dogAnim = 0;
+		if (dogPos.z >= 2.3f){
+
+			dogAnim = 2;
+			
+		}
+	}	
+
+	else if (dogAnim == 2) {	//Priemra rotacion del perro
+
+		body += 0.03f;
+
+		if (body >= 90.0f) {
+			dogAnim = 3;
+		}
+
+	}
+
+	else if (dogAnim == 3) {	//Recorrido en X
+
+		if (!step) {	//STATE 1
+			RLegs += 0.03f;
+			FLegs += 0.03f;
+			head += 0.03f;
+			tail += 0.03f;
+			if (RLegs > 15.0f) {
+				step = true;
+			}
+		}
+		else {
+			RLegs -= 0.03f;
+			FLegs -= 0.03f;
+			head -= 0.03f;
+			tail -= 0.03f;
+			if (RLegs < -15.0f) {
+				step = false;
+			}
+		}
+
+		dogPos.x += 0.001;
+
+		if (dogPos.x >= 2.3f) {
+
+			dogAnim = 4;
+
+		}
+
+	}
+
+	else if (dogAnim == 4) {		//Segunda rotacion
+
+		body += 0.03f;
+
+		if (body >= 180.0f) {
+			dogAnim = 5;
+		}
+	}
+
+
+	else if (dogAnim == 5) {	//Recorrido atras
+
+		if (!step) {	//STATE 1
+			RLegs += 0.03f;
+			FLegs += 0.03f;
+			head += 0.03f;
+			tail += 0.03f;
+			if (RLegs > 15.0f) {
+				step = true;
+			}
+		}
+		else {
+			RLegs -= 0.03f;
+			FLegs -= 0.03f;
+			head -= 0.03f;
+			tail -= 0.03f;
+			if (RLegs < -15.0f) {
+				step = false;
+			}
+		}
+		
+		dogPos.z -= 0.001;
+
+		if (dogPos.z <= -2.3f) {
+
+			dogAnim = 6;
+
+		}
+
 	}
 	
+	else if (dogAnim == 6) {		//Segunda rotacion
+
+		body += 0.03f;
+
+		if (body >= 315.0f) {
+			dogAnim = 7;
+		}
+	}
+
+	else if (dogAnim == 7) {	//Recorrido en diagonal
+
+		if (!step) {	//STATE 1
+			RLegs += 0.03f;
+			FLegs += 0.03f;
+			head += 0.03f;
+			tail += 0.03f;
+			if (RLegs > 15.0f) {
+				step = true;
+			}
+		}
+		else {
+			RLegs -= 0.03f;
+			FLegs -= 0.03f;
+			head -= 0.03f;
+			tail -= 0.03f;
+			if (RLegs < -15.0f) {
+				step = false;
+			}
+		}
+
+		dogPos.z += 0.001;
+		dogPos.x -= 0.001;
+
+		if (dogPos.z >= 0.0f) {
+
+			dogAnim = 0;
+
+		}
+
+		}
+
+
+
+
 	
 }
 
