@@ -31,7 +31,7 @@
     <None Include="Shader\modelLoading.vs" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Jesus_Perez_Maquina de estados.cpp" />
+    <ClCompile Include="Jesus_Perez_KeyFrames.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
