@@ -30,6 +30,7 @@
 #include "Shader.h"
 #include "Camera.h"
 #include "Model.h"
+#include "Texture.h"
 
 // Function prototypes
 void KeyCallback(GLFWwindow *window, int key, int scancode, int action, int mode);
@@ -176,6 +177,7 @@ int main()
 
 	Shader lightingShader("Shader/lighting.vs", "Shader/lighting.frag");
 	Shader lampShader("Shader/lamp.vs", "Shader/lamp.frag");
+	Shader skyboxShader("Shader/SkyBox.vs", "Shader/SkyBox.frag");
 	
 	//models
 	Model DogBody((char*)"Models/DogBody.obj");
