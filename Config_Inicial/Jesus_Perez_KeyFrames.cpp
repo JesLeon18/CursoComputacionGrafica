@@ -38,7 +38,7 @@ void DoMovement();
 void Animation();
 
 // Window dimensions
-const GLuint WIDTH = 1200, HEIGHT = 800;
+const GLuint WIDTH = 2400, HEIGHT = 1600;
 int SCREEN_WIDTH, SCREEN_HEIGHT;
 
 // Camera
@@ -405,12 +405,12 @@ int main()
 
 	//Load textures
 	vector < const GLchar*> faces;
-	faces.push_back("SkyBox/right.jpg");
-	faces.push_back("SkyBox/left.jpg");
-	faces.push_back("SkyBox/top.jpg");
-	faces.push_back("SkyBox/bottom.jpg");
-	faces.push_back("SkyBox/back.jpg");
-	faces.push_back("SkyBox/front.jpg");
+	faces.push_back("SkyBox2/right.jpg");
+	faces.push_back("SkyBox2/left.jpg");
+	faces.push_back("SkyBox2/top.jpg");
+	faces.push_back("SkyBox2/bottom.jpg");
+	faces.push_back("SkyBox2/back.jpg");
+	faces.push_back("SkyBox2/front.jpg");
 
 	GLuint cubemapTexture = TextureLoading::LoadCubemap(faces);
 
